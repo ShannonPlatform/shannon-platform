@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from pydantic import parse_obj_as
 
 from shannon_platform.model.sensor import Sensor
-from shannon_platform.connection.serial import SerialConnection
+from shannon_platform.service.serial import SerialService
 
 
 router = APIRouter()
@@ -16,7 +16,7 @@ def get_sensors():
 
 @router.get('/{sensor_id}', response_model=Sensor)
 def get_sensor(sensor_id: str):
-    serial_connection = SerialConnection()
-    responce = serial_connection.request(sensor_id)
+    serial_service = SerialService()
+    responce = serial_service.request(sensor_id)
 
     return parse_obj_as(Sensor, json.loads(responce))

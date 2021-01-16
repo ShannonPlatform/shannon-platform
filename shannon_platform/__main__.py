@@ -5,7 +5,6 @@ from typing import Optional
 from fastapi import FastAPI
 
 from shannon_platform.routes import sensors, switches
-from shannon_platform.connection.serial import SerialConnection, Serial
 
 
 app = FastAPI()

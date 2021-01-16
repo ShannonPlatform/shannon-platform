@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from typing import List
 
 from shannon_platform.model.switch import Switch
-from shannon_platform.connection.serial import SerialConnection
+from shannon_platform.service.serial import SerialService
 
 
 router = APIRouter()
@@ -22,6 +22,6 @@ def update_switch(switch_id: str, state: bool):
     selected_switch = list(filter(lambda switch: switch.id==switch_id, Switch.all()))[0]
     selected_switch.state = state
 
-    serial_connection = SerialConnection()
-    serial_connection.request(selected_switch.json())
+    serial_service = SerialService()
+    serial_service.request(selected_switch.json())
     

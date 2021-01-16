@@ -6,7 +6,7 @@ from threading import Thread
 from time import sleep
 
 
-class SerialConnection():
+class SerialService():
     __adaptor = None
 
     @staticmethod
