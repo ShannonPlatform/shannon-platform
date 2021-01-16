@@ -11,12 +11,12 @@ class SerialService():
 
     @staticmethod
     def adaptor() -> Serial:
-        if SerialConnection.__adaptor != None:
-            return SerialConnection.__adaptor
+        if SerialService.__adaptor != None:
+            return SerialService.__adaptor
         else:
-            SerialConnection.__adaptor = Serial(port='/dev/cu.usbmodem14301', baudrate=9600)
+            SerialService.__adaptor = Serial(port='/dev/cu.usbmodem14301', baudrate=9600)
             sleep(2)
-            return SerialConnection.__adaptor
+            return SerialService.__adaptor
 
     def __init__(self) -> None:
         super().__init__()
