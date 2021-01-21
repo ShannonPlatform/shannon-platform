@@ -1,5 +1,4 @@
 from typing import Any, Dict
-from shannon_platform.base.notification_center import NotificationCenter
 from bluepy import btle
 from threading import Thread
 
