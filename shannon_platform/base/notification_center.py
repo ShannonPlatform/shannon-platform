@@ -1,5 +1,5 @@
 from typing import Callable, Dict, List, Any
-from shannon_platform.base.singleton import Singleton
+from shannon_platform.base.metaclasses import Singleton
 
 
 class NotificationCenter(metaclass=Singleton):

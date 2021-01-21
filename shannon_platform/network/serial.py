@@ -2,7 +2,7 @@ from serial import Serial
 from threading import Thread
 
 from shannon_platform.base.notification_center import NotificationCenter
-from shannon_platform.base.singleton import Singleton
+from shannon_platform.base.metaclasses import Singleton
 
 
 class SerialService(metaclass=Singleton):
