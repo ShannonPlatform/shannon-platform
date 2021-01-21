@@ -5,7 +5,7 @@ from shannon_platform.base.notification_center import NotificationCenter
 from shannon_platform.base.singleton import Singleton
 
 
-class SerialNetwork(metaclass=Singleton):
+class SerialService(metaclass=Singleton):
     __adaptor = Serial(port='/dev/cu.usbmodem14301', baudrate=9600)
 
     def __init__(self) -> None:
