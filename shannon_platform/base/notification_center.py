@@ -18,6 +18,6 @@ class NotificationCenter(metaclass=Singleton):
         for name in self.__observers.keys():
             self.__observers[name].remove(callback)
 
-    def post(self, name: str, user_info: Dict[str, str]) -> None:
+    def post(self, name: str, user_info: Dict[str, Any]) -> None:
         for callback in self.__observers[name]:
             callable(user_info)
