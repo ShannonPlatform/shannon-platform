@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from serial import Serial
 from threading import Thread
 
@@ -19,17 +20,17 @@ class SerialService(metaclass=Singleton):
     def read(self):
         while True:
             data = self.__adaptor.read(2)
-            if data:
-                id = data[0]
-                value = data[1]
+            
+            if len(data) < 2:
+                return
 
-                NotificationCenter().post(
-                    name="com.shannon.device-receive", 
-                    user_info={
-                        'id': id,
-                        'value': value
-                    }
-                )
+            NotificationCenter().post(
+                name="com.shannon.device-receive", 
+                user_info={
+                    'id': data[0],
+                    'value': data[1]
+                }
+            )
 
     def write(self, user_info: Dict[str, Any]):
         command = bytes([user_info['id'], user_info['value']])
