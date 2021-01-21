@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List
+from typing import Callable, Dict, List, Any
 from shannon_platform.base.singleton import Singleton
 
 
