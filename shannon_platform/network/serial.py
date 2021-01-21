@@ -31,6 +31,6 @@ class SerialService(metaclass=Singleton):
                     }
                 )
 
-    def write(self, user_info):
+    def write(self, user_info: Dict[str, Any]):
         command = bytes([user_info['id'], user_info['value']])
         self.__adaptor.write(command)
