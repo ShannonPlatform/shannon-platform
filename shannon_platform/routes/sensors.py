@@ -1,4 +1,5 @@
 import json
+from os import name
 from typing import List
 from fastapi import APIRouter
 from pydantic import parse_obj_as
@@ -11,7 +12,7 @@ router = APIRouter()
 
 @router.get('/', response_model=list[Sensor])
 def get_sensors():
-    return Sensor.all()
+    return [Sensor(id='234', name='motion')]
 
 @router.get('/{sensor_id}', response_model=Sensor)
 def get_sensor(sensor_id: str):
