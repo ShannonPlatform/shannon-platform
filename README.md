@@ -1,5 +1,5 @@
 # Shannon Home Automation Platform
-this project contains a python package to run your custom design home automation using arduino boards and raspberry pi. This project have been developed to work with Homebridge project, because of that some responces in web responce may not be standard. 
+this project contains a python package to run your custom design home automation using arduino boards and raspberry pi. This project have been developed to work with Homebridge project, because of that some responses in web response may not be standard. 
 
 ## installation
 you can install this project using pip
@@ -7,11 +7,11 @@ you can install this project using pip
 pip install shannon_platform
 ```
 
-## requierments
+## requirements
 to support bluetooth I have used the BluePy library which supports only linux. if you are considering to run this project on any OS other than Linux, you need to refactor `bluetooth.py` file.
 
 ## how arduino device can join the network?
-arduino devices can connect to the system using serial ports or BLE protocol. the arduino device considered as a network routers. Inside the arduino code you can define diffrent devices that connect to arduino using I/O pins.
+arduino devices can connect to the system using serial ports or BLE protocol. the arduino device considered as a network routers. Inside the arduino code you can define different devices that connect to arduino using I/O pins.
 
 Every I/O command is two byte data. The first byte defines the id of the device and the second byte defines the data that must transfer. The first four bits of id-byte (first byte) defines the type of device. to see list of available device types check the device type section.
 
