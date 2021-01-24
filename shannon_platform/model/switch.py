@@ -1,16 +1,15 @@
 from __future__ import annotations
-from os import PRIO_PGRP
-from pydantic import BaseModel, parse_file_as
 from typing import Any, Dict, List, Optional
 
 from shannon_platform.base.notification_center import NotificationCenter
 
 
-class Switch(BaseModel):
-    id: str
-    name: Optional[str]
-    _state: bool
-
+class Switch:
+    def __init__(self, id: int, state: bool, name: str=None) -> None:
+        self.id: int = id
+        self.name: str = name
+        self._state: bool = state
+        
     @property
     def state(self):
         return self._state

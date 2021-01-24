@@ -1,21 +1,20 @@
-from typing import Any
-from pydantic import BaseModel
+from typing import Any, Dict
 
 from shannon_platform.base.notification_center import NotificationCenter
 
-class Sensor(BaseModel):
-    id: str
-    name: str
-    _value: int
+class Sensor:
+    def __init__(self, id: str, value: int=0, name: str=None) -> None:
+        self.id: int = id
+        self.name: str = name
+        self._value: int = value
+        
+        NotificationCenter().add_observer('com.shannon.device-receive', callback=self.__value_changed)
+
 
     @property
     def value(self):
         return self._state
 
-    def __init__(__pydantic_self__, **data: Any) -> None:
-        super().__init__(**data)
-        
-        NotificationCenter().add_observer('com.shannon.device-receive', callback=__pydantic_self__.__value_changed)
-
-    def __value_changed(self):
-        pass
+    def __value_changed(self, user_info: Dict[str, Any]) -> None:
+        if user_info['id'] == self.id:
+            self.value = user_info['value']
