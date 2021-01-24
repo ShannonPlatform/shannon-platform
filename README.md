@@ -22,4 +22,4 @@ Every I/O command is two byte data. The first byte defines the id of the device 
 # |_________ Device type
 ```
 
-## 🚧 UNDER CONSTRUCTION 🚧: this project is under development. no release yet available.
+## 🚧 UNDER CONSTRUCTION 🚧
