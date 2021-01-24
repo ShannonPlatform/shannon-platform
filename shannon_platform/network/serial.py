@@ -2,7 +2,7 @@ from typing import Any, Dict
 from serial import Serial
 from threading import Thread
 
-from shannon_platform.base.notification_center import NotificationCenter
+from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
 from shannon_platform.base.metaclasses import Singleton
 
 
@@ -12,7 +12,7 @@ class SerialService(metaclass=Singleton):
     def __init__(self) -> None:
         super().__init__()
 
-        NotificationCenter().add_observer(name="com.shannon.device-send", callback=self.write)
+        NotificationCenter().add_observer(name=NotificationDefaultNames.DATA_SEND, callback=self.write)
 
         serial_read_thread = Thread(target=self.read)
         serial_read_thread.start()
@@ -25,7 +25,7 @@ class SerialService(metaclass=Singleton):
                 return
 
             NotificationCenter().post(
-                name="com.shannon.device-receive", 
+                name=NotificationDefaultNames.DATA_RECEIVE, 
                 user_info={
                     'id': data[0],
                     'value': data[1]

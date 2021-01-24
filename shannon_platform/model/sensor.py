@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from shannon_platform.base.notification_center import NotificationCenter
+from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
 
 class Sensor:
     def __init__(self, id: str, value: int=0, name: str=None) -> None:
@@ -8,7 +8,7 @@ class Sensor:
         self.name: str = name
         self._value: int = value
         
-        NotificationCenter().add_observer('com.shannon.device-receive', callback=self.__value_changed)
+        NotificationCenter().add_observer(NotificationDefaultNames.DATA_RECEIVE, callback=self.__value_changed)
 
 
     @property

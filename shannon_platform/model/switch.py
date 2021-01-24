@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
-from shannon_platform.base.notification_center import NotificationCenter
+from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
 
 
 class Switch:
@@ -20,7 +20,7 @@ class Switch:
 
         if is_on:
             NotificationCenter().post(
-                name="com.shannon.device-send",
+                name=NotificationDefaultNames.DATA_SEND,
                 user_info={
                     'id': self.id,
                     'value': 0x01
@@ -28,7 +28,7 @@ class Switch:
             )
         else:
             NotificationCenter().post(
-                name="com.shannon.device-send",
+                name=NotificationDefaultNames.DATA_SEND,
                 user_info={
                     'id': self.id,
                     'value': 0x02

@@ -1,4 +1,6 @@
 from typing import Callable, Dict, List, Any
+from enum import Enum
+
 from shannon_platform.base.metaclasses import Singleton
 
 
@@ -21,3 +23,8 @@ class NotificationCenter(metaclass=Singleton):
     def post(self, name: str, user_info: Dict[str, Any]) -> None:
         for callback in self.__observers[name]:
             callable(user_info)
+
+
+class NotificationDefaultNames(Enum):
+    DATA_SEND = 'receicom.shannon.device-sendve'
+    DATA_RECEIVE = 'com.shannon.device-receive'
