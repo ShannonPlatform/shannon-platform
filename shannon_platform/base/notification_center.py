@@ -28,3 +28,4 @@ class NotificationCenter(metaclass=Singleton):
 class NotificationDefaultNames(Enum):
     DATA_SEND = 'com.shannon.device-send'
     DATA_RECEIVE = 'com.shannon.device-receive'
+    REGISTER = 'com.shannon.device-register'

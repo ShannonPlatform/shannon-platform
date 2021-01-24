@@ -37,10 +37,20 @@ class BluetoothNotificationHandler(btle.DefaultDelegate):
         if len(data) < 2:
             return
 
-        NotificationCenter().post(
-            name=NotificationDefaultNames.DATA_RECEIVE,
-            user_info={
-                'id': data[0],
-                'value': data[1]
-            }
-        )
+        # device register
+        if data[0] == 0x00:
+            NotificationCenter().post(
+                name=NotificationDefaultNames.REGISTER,
+                user_info={
+                    'id': data[1]
+                }
+            )
+        # data receive
+        else:
+            NotificationCenter().post(
+                name=NotificationDefaultNames.DATA_RECEIVE,
+                user_info={
+                    'id': data[0],
+                    'value': data[1]
+                }
+            )

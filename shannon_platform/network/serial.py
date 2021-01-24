@@ -22,15 +22,25 @@ class SerialService(metaclass=Singleton):
             data = self.__adaptor.read(2)
             
             if len(data) < 2:
-                return
-
-            NotificationCenter().post(
-                name=NotificationDefaultNames.DATA_RECEIVE, 
-                user_info={
-                    'id': data[0],
-                    'value': data[1]
-                }
-            )
+                continue
+            
+            # device register
+            if data[0] == 0x00:
+                NotificationCenter().post(
+                    name=NotificationDefaultNames.REGISTER,
+                    user_info={
+                        'id': data[1]
+                    }
+                )
+            # data receive
+            else:
+                NotificationCenter().post(
+                    name=NotificationDefaultNames.DATA_RECEIVE, 
+                    user_info={
+                        'id': data[0],
+                        'value': data[1]
+                    }
+                )
 
     def write(self, user_info: Dict[str, Any]):
         command = bytes([user_info['id'], user_info['value']])
