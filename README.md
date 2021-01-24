@@ -21,3 +21,5 @@ Every I/O command is two byte data. The first byte defines the id of the device 
 # ||________ Device unique id number (0, 15)
 # |_________ Device type
 ```
+
+## 🚧 UNDER CONSTRUCTION 🚧: this project is under development. no release yet available.
