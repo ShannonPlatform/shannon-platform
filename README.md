@@ -8,7 +8,7 @@ pip install shannon_platform
 ```
 
 ## requierments
-to support bluetooth I have used th BluePy library which supports only linux. if you are considering to run this project on any OS other than Linux, you need to refactor `bluetooth.py` file.
+to support bluetooth I have used the BluePy library which supports only linux. if you are considering to run this project on any OS other than Linux, you need to refactor `bluetooth.py` file.
 
 ## how arduino device can join the network?
 arduino devices can connect to the system using serial ports or BLE protocol. the arduino device considered as a network routers. Inside the arduino code you can define diffrent devices that connect to arduino using I/O pins.

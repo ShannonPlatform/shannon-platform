@@ -10,6 +10,8 @@ class Sensor:
         
         NotificationCenter().add_observer(NotificationDefaultNames.DATA_RECEIVE, callback=self.__value_changed)
 
+    def __del__(self) -> None:
+        NotificationCenter().remove_observer(self.__value_changed)
 
     @property
     def value(self):
