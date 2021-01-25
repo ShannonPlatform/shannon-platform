@@ -30,6 +30,10 @@ class BluetoothService(metaclass=Singleton):
     def write(self, user_info: Dict[str, Any]) -> None:
         command = bytes([user_info['id'], user_info['value']])
         self.characteristic.write(command)
+    
+
+    def request_devices(self) -> None:
+        self.characteristic.write(bytes([0x00, 0x00]))
 
 
 class BluetoothNotificationHandler(btle.DefaultDelegate):
