@@ -6,12 +6,10 @@ from shannon_platform.base.notification_center import NotificationCenter, Notifi
 from shannon_platform.base.metaclasses import Singleton
 
 
-class BluetoothService(metaclass=Singleton):
-    def __init__(self) -> None:
-        super().__init__()
-
+class BluetoothService:
+    def __init__(self, address: str) -> None:
         self.peripheral = btle.Peripheral()
-        self.peripheral.connect(self.address, btle.ADDR_TYPE_PUBLIC)
+        self.peripheral.connect(address, btle.ADDR_TYPE_PUBLIC)
         self.peripheral.setDelegate(BluetoothNotificationHandler())
         self.service = self.p.getServiceByUUID("0000ffe0-0000-1000-8000-00805f9b34fb")
         self.characteristic = self.svc.getCharacteristics()[0]

@@ -1,18 +1,15 @@
 from typing import Any, Dict
 from serial import Serial
 from threading import Thread
-import binascii
 import time
 
 from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
 from shannon_platform.base.metaclasses import Singleton
 
 
-class SerialService(metaclass=Singleton):
-    __adaptor = Serial(port='/dev/cu.usbmodem14301', baudrate=9600)
-
-    def __init__(self) -> None:
-        super().__init__()
+class SerialService:
+    def __init__(self, port: str) -> None:
+        self.__adaptor = Serial(port=port, baudrate=9600)
 
         NotificationCenter().add_observer(name=NotificationDefaultNames.DATA_SEND, callback=self.write)
 
