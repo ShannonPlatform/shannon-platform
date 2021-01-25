@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from shannon_platform.model.sensor import Sensor
 from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
@@ -13,8 +13,12 @@ def get_sensors():
     return sensors
 
 @router.get('/{sensor_id}')
-def get_sensor(sensor_id: str):
-    return None
+def get_sensor(sensor_id: int):
+    sensor = next((sensor for sensor in sensors if sensor.id==sensor_id), None)
+    if sensor:
+        return sensor
+    else:
+        raise HTTPException(404, f'Sensor with id {sensor_id} not found.')
 
 
 def register_sensors(user_info) -> None:
