@@ -14,9 +14,9 @@ def get_sensors():
 
 @router.get('/{sensor_id}')
 def get_sensor(sensor_id: int):
-    sensor = next((sensor for sensor in sensors if sensor.id==sensor_id), None)
-    if sensor:
-        return sensor
+    selected_sensor = next((sensor for sensor in sensors if sensor.id==sensor_id), None)
+    if selected_sensor:
+        return selected_sensor
     else:
         raise HTTPException(404, f'Sensor with id {sensor_id} not found.')
 
