@@ -5,7 +5,7 @@ from shannon_platform.base.notification_center import NotificationCenter, Notifi
 
 
 class Switch:
-    def __init__(self, id: int, state: bool, name: str=None) -> None:
+    def __init__(self, id: int, state: bool=False, name: str=None) -> None:
         self.id: int = id
         self.name: str = name
         self._state: bool = state
