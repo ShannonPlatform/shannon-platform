@@ -1,4 +1,3 @@
-from __future__ import register_switches
 from fastapi import APIRouter
 from typing import List
 
@@ -8,8 +7,6 @@ from shannon_platform.base.notification_center import NotificationCenter, Notifi
 
 router = APIRouter()
 switches: List[Switch] = []
-
-NotificationCenter().add_observer(NotificationDefaultNames.REGISTER, register_switches)
 
 @router.get('/')
 def get_switches():
@@ -35,3 +32,6 @@ def register_switches(user_info) -> None:
         if not device_id in map(lambda switch: switch.id, switches):
             new_switch = Switch(id=device_id)
             switches.append(new_switch)
+
+
+NotificationCenter().add_observer(NotificationDefaultNames.REGISTER, register_switches)

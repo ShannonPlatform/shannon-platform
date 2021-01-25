@@ -1,4 +1,3 @@
-from __future__ import register_sensors
 from typing import List
 from fastapi import APIRouter
 
@@ -8,9 +7,6 @@ from shannon_platform.base.notification_center import NotificationCenter, Notifi
 
 router = APIRouter()
 sensors: List[Sensor] = []
-
-NotificationCenter().add_observer(NotificationDefaultNames.REGISTER, register_sensors)
-
 
 @router.get('/')
 def get_sensors():
@@ -31,3 +27,6 @@ def register_sensors(user_info) -> None:
         if not device_id in map(lambda sensor: sensor.id, sensors):
             new_sensor = Sensor(id=device_id)
             sensors.append(new_sensor)
+
+
+NotificationCenter().add_observer(NotificationDefaultNames.REGISTER, register_sensors)
