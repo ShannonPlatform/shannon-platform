@@ -21,8 +21,11 @@ class NotificationCenter(metaclass=Singleton):
             self.__observers[name].remove(callback)
 
     def post(self, name: str, user_info: Dict[str, Any]) -> None:
+        if not name in self.__observers.keys():
+            return
+
         for callback in self.__observers[name]:
-            callable(user_info)
+            callback(user_info)
 
 
 class NotificationDefaultNames(Enum):
