@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 from typing import List
 
 from shannon_platform.model.switch import Switch
@@ -21,8 +21,13 @@ def get_switch(switch_id: int):
         raise HTTPException(404, f'Switch with id {switch_id} not found.')
 
 @router.put('/{switch_id}', status_code=204)
-def update_switch(switch_id: str, state: bool):
-    pass
+def update_switch(switch_id: int, state: bool):
+    selected_switch = next((switch for switch in switches if switch.id==switch_id), None)
+    if selected_switch:
+        selected_switch.state = state
+        return Response(status_code=204)
+    else:
+        raise HTTPException(404, f'Switch with id {switch_id} not found.')
     
 
 def register_switches(user_info) -> None:
