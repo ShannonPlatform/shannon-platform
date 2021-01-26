@@ -22,4 +22,12 @@ Every I/O command is two byte data. The first byte defines the id of the device 
 # |_________ Device type
 ```
 
+## id palette
+
+| id | description |
+|----|-------------|
+|0x00| request/response device list |
+|0x1x| switch |
+|0x2x| sensor |
+
 ## 🚧 UNDER CONSTRUCTION 🚧
