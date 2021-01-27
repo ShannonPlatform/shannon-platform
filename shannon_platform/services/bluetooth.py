@@ -33,6 +33,9 @@ class BluetoothService:
     def request_devices(self) -> None:
         self.characteristic.write(bytes([0x00, 0x00]))
 
+    def shutdown(self) -> None:
+        self.peripheral.disconnect()
+
 
 class BluetoothNotificationHandler(btle.DefaultDelegate):
     def handleNotification(self, cHandle, data):

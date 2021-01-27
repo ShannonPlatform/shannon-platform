@@ -52,3 +52,7 @@ class SerialService:
 
     def request_devices(self) -> None:
         self.__adaptor.write(bytes([0x00, 0x00]))
+
+    def shutdown(self) -> None:
+        self.__adaptor.close()
+        print('serial closed.')

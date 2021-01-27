@@ -17,6 +17,11 @@ services = [
 def index():
     return {"message": "shannon home automation platform"}
 
+@app.on_event("shutdown")
+def shutdown_event():
+    for service in services:
+        service.shutdown()
+
 app.include_router(
     sensors.router,
     prefix='/sensors',
