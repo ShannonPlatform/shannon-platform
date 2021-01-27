@@ -19,4 +19,4 @@ class Sensor:
 
     def __value_changed(self, user_info: Dict[str, Any]) -> None:
         if user_info['id'] == self.id:
-            self.value = user_info['value']
+            self._value = user_info['value']
