@@ -8,7 +8,7 @@ from shannon_platform.services.serial import SerialService
 
 app = FastAPI()
 services = [
-    SerialService(port='/dev/cu.usbmodem14301'),
+    SerialService(port="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_854333332313515052D0-if00"),
     # BluetoothService(address='')
 ]
 

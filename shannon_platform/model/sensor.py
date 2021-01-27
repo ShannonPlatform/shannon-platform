@@ -14,8 +14,8 @@ class Sensor:
         NotificationCenter().remove_observer(self.__value_changed)
 
     @property
-    def value(self):
-        return self._state
+    def value(self) -> int:
+        return self._value
 
     def __value_changed(self, user_info: Dict[str, Any]) -> None:
         if user_info['id'] == self.id:

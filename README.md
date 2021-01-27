@@ -30,5 +30,6 @@ Every I/O command is two byte data. The first byte defines the id of the device 
 |0x1x| switch |
 |0x2x| sensor |
 |0x3x| analog device |
+|0x4x| security |
 
 ## 🚧 UNDER CONSTRUCTION 🚧
