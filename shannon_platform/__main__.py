@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from shannon_platform.routes import sensors, switches
+from shannon_platform.routes import sensors, switches, security
 from shannon_platform.services.serial import SerialService
 # from shannon_platform.services.bluetooth import BluetoothService
 
@@ -32,6 +32,12 @@ app.include_router(
     switches.router,
     prefix='/switches',
     tags=['switches']
+)
+
+app.include_router(
+    security.router,
+    prefix='/security',
+    tags=['security']
 )
 
 def main():
