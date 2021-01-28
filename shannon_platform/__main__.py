@@ -3,13 +3,13 @@ from fastapi import FastAPI
 
 from shannon_platform.routes import sensors, switches, security
 from shannon_platform.services.serial import SerialService
-# from shannon_platform.services.bluetooth import BluetoothService
+from shannon_platform.services.bluetooth import BluetoothService
 
 
 app = FastAPI()
 services = [
     SerialService(port="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_854333332313515052D0-if00"),
-    # BluetoothService(address='')
+    BluetoothService(address='A8:E2:C1:76:6A:B8')
 ]
 
 
