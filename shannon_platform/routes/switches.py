@@ -16,7 +16,7 @@ def get_switches():
 def get_switch(switch_id: int):
     selected_switch = next((switch for switch in switches if switch.id==switch_id), None)
     if selected_switch:
-        return selected_switch
+        return {'state': selected_switch.state}
     else:
         raise HTTPException(404, f'Switch with id {switch_id} not found.')
 
