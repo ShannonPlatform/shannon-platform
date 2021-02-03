@@ -7,7 +7,7 @@ class Sensor:
         self.id: int = id
         self.name: str = name
         self._value: int = value
-        self.value_did_changed: Callable
+        self.delegate: SensorDelegate = None
         
         NotificationCenter().add_observer(NotificationDefaultNames.DATA_RECEIVE, callback=self.__value_changed)
 
@@ -26,4 +26,10 @@ class Sensor:
                 return
 
             self._value = user_info['value']
-            self.value_did_changed()
+            
+            if self.delegate:
+                self.delegate.sensor_did_update(self, new_value)
+
+class SensorDelegate:
+    def sensor_did_update(self, sensor: Sensor, state: bool) -> None:
+        raise NotImplementedError
