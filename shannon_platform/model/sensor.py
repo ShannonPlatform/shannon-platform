@@ -1,12 +1,13 @@
-from typing import Any, Dict
+from typing import Any, Callable, Dict
 
 from shannon_platform.base.notification_center import NotificationCenter, NotificationDefaultNames
 
 class Sensor:
-    def __init__(self, id: str, value: int=0, name: str=None) -> None:
+    def __init__(self, id: int, value: int=0, name: str=None) -> None:
         self.id: int = id
         self.name: str = name
         self._value: int = value
+        self.value_did_changed: Callable
         
         NotificationCenter().add_observer(NotificationDefaultNames.DATA_RECEIVE, callback=self.__value_changed)
 
@@ -19,4 +20,10 @@ class Sensor:
 
     def __value_changed(self, user_info: Dict[str, Any]) -> None:
         if user_info['id'] == self.id:
+            
+            new_value = user_info['value']
+            if self._value == new_value:
+                return
+
             self._value = user_info['value']
+            self.value_did_changed()
