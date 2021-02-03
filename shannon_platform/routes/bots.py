@@ -9,7 +9,7 @@ from shannon_platform.base.notification_center import NotificationCenter, Notifi
 
 router = APIRouter()
 bots: List[Bot] = [
-    AutoLight(lamp=Switch(12), motion=Sensor(0x21))
+    AutoLight(lamp=Switch(0x12), motion=Sensor(0x21))
 ]
 
 @router.get('/')
