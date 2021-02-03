@@ -7,8 +7,8 @@ from shannon_platform.model.sensor import Sensor, SensorDelegate
 
 class Bot:
     def __init__(self, id: int, name: str) -> None:
-        self.id: int
-        self.name: str
+        self.id: int = id
+        self.name: str = name
         self.enable: bool = False
 
 
@@ -21,7 +21,7 @@ class AutoLight(Bot, SensorDelegate):
         self.motion.delegate = self
 
         self.__motion_last_sensing = int(time.time())
-
+        self.__MOTION_DELAY = 2 * 60
 
     def sensor_did_update(self, sensor: Sensor, state: bool) -> None:
         if self.enable == False:
