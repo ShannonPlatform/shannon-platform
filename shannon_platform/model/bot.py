@@ -21,7 +21,7 @@ class AutoLight(Bot, SensorDelegate):
         self.motion.delegate = self
 
         self.__motion_last_sensing = int(time.time())
-        self.__MOTION_DELAY = 2 * 60
+        self.__MOTION_DELAY = 10 * 60
 
     def sensor_did_update(self, sensor: Sensor, state: bool) -> None:
         if self.enable == False:
