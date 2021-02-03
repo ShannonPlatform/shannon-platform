@@ -14,7 +14,11 @@ bots: List[Bot] = [
 
 @router.get('/')
 def get_bots():
-    return bots
+    return [{
+        'id': bot.id,
+        'name': bot.name,
+        'enable': bot.enable,
+    } for bot in bots]
 
 @router.get('/{bot_id}')
 def get_bot(bot_id: int):
